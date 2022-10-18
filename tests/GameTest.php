@@ -46,7 +46,7 @@ class GameTest extends TestCase
         $this->g->roll(10); //strike
         $this->g->roll(3);
         $this->g->roll(4);
-        $this->rollMany(17, 0);
+        $this->rollMany(16, 0);
         $this->assertEquals(24, $this->g->score());
     }
 
