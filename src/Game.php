@@ -17,7 +17,7 @@ class Game
         $score = 0;
         $frameIndex = 0;
         for ($frame = 0; $frame < 10; $frame++) {
-            if ($this->rolls[$frameIndex] + $this->rolls[$frameIndex + 1] == 10) {    //spare
+            if ($this->isSpare($frameIndex)) {
                 $score += 10 + $this->rolls[$frameIndex + 2];
             } else {
                 $score += $this->rolls[$frameIndex] + $this->rolls[$frameIndex + 1];
@@ -25,5 +25,10 @@ class Game
             $frameIndex += 2;
         }
         return $score;
+    }
+
+    protected function isSpare(int $frameIndex)
+    {
+        return $this->rolls[$frameIndex] + $this->rolls[$frameIndex + 1] == 10;
     }
 }
