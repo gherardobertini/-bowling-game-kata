@@ -6,5 +6,8 @@ use PHPUnit\Framework\TestCase;
 
 class GameTest extends TestCase
 {
-    
+    public function testGutterGame()
+    {
+        $g = new Game();
+    }
 }
