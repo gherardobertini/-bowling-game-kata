@@ -32,4 +32,13 @@ class GameTest extends TestCase
         $this->rollMany(20, 1);
         $this->assertEquals(20, $this->g->score());
     }
+
+    public function testOneSpare()
+    {
+        $this->g->roll(5);
+        $this->g->roll(5);  //spare
+        $this->g->roll(3);
+        $this->rollMany(17, 0);
+        $this->assertEquals(16, $this->g->score());
+    }
 }
