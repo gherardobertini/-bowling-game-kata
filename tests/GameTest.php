@@ -14,21 +14,22 @@ class GameTest extends TestCase
         $this->g = new Game();
     }
 
+    private function rollMany(int $n, int $pins)
+    {
+        for($i = 0; $i < $n; $i++) {
+            $this->g->roll($pins);
+        }
+    }
+
     public function testGutterGame()
     {
-        for($i = 0; $i < 20; $i++) {
-            $this->g->roll(0);
-        }
-
+        $this->rollMany(20, 0);
         $this->assertEquals(0, $this->g->score());
     }
 
     public function testAllOnes()
     {
-        for($i = 0; $i < 20; $i++) {
-            $this->g->roll(1);
-        }
-
+        $this->rollMany(20, 1);
         $this->assertEquals(20, $this->g->score());
     }
 }
