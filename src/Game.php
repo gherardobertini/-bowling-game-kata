@@ -17,7 +17,7 @@ class Game
         $score = 0;
         $frameIndex = 0;
         for ($frame = 0; $frame < 10; $frame++) {
-            if ($this->rolls[$frameIndex] == 10) {  //strike
+            if ($this->isStrike($frameIndex)) {
                 $score += 10 + $this->strikeBonus($frameIndex);
                 $frameIndex++;
             } else if ($this->isSpare($frameIndex)) {
@@ -29,6 +29,11 @@ class Game
             }
         }
         return $score;
+    }
+
+    private function isStrike(int $frameIndex): bool
+    {
+        return $this->rolls[$frameIndex] == 10;
     }
 
     private function sumOfBallsInFrame(int $frameIndex): int
