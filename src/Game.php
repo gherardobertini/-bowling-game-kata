@@ -15,8 +15,10 @@ class Game
     public function score(): int
     {
         $score = 0;
-        for ($i = 0; $i < count($this->rolls); $i++) {
-            $score += $this->rolls[$i];
+        $i = 0;
+        for ($frame = 0; $frame < 10; $frame++) {
+            $score += $this->rolls[$i] + $this->rolls[$i + 1];
+            $i += 2;
         }
         return $score;
     }
