@@ -7,14 +7,29 @@ use PHPUnit\Framework\TestCase;
 
 class GameTest extends TestCase
 {
+    private $g;
+
+    public function setUp(): void
+    {
+        $this->g = new Game();
+    }
+
+    private function rollMany(int $n, int $pins)
+    {
+        for($i = 0; $i < $n; $i++) {
+            $this->g->roll($pins);
+        }
+    }
+
     public function testGutterGame()
     {
-        $g = new Game();
+        $this->rollMany(20, 0);
+        $this->assertEquals(0, $this->g->score());
+    }
 
-        for($i = 0; $i < 20; $i++) {
-            $g->roll(0);
-        }
-
-        $this->assertEquals(0, $g->score());
+    public function testAllOnes()
+    {
+        $this->rollMany(20, 1);
+        $this->assertEquals(20, $this->g->score());
     }
 }
