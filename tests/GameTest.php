@@ -2,6 +2,7 @@
 
 namespace App\Test;
 
+use App\Game;
 use PHPUnit\Framework\TestCase;
 
 class GameTest extends TestCase
@@ -9,5 +10,9 @@ class GameTest extends TestCase
     public function testGutterGame()
     {
         $g = new Game();
+
+        for($i = 0; $i < 20; $i++) {
+            $g->roll(0);
+        }
     }
 }
